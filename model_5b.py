@@ -1,6 +1,6 @@
 import torch.nn as nn
 import torch
-# from functions import ReverseLayerF
+from functions import ReverseLayerF
 
 
 outputSize=6
@@ -104,7 +104,8 @@ class Adver(nn.Module):
         self.dropout2 = nn.Dropout(0.5)
         self.sigmoid = nn.Sigmoid()
 
-    def forward(self, x):
+    def forward(self, x, alpha):
+        x = ReverseLayerF.apply(x, alpha)
         x = self.ad_layer1(x)
         x = self.relu1(x)
         x = self.dropout1(x)
