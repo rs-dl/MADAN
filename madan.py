@@ -153,7 +153,7 @@ for epoch in range(n_epoch):
         # print(input_img.size())
         # class_output_source, domain_output = my_net(input_data=input_img, alpha=alpha)
         s_feature = my_net(input_data=input_img, alpha=alpha)
-        s_local_probability = ad_net(s_feature)
+        s_local_probability = ad_net(s_feature, alpha)
         s_local_out = H(s_local_probability)
         s_global_feature = (one_tensor.data + s_local_out.data) * s_feature
         
@@ -162,7 +162,7 @@ for epoch in range(n_epoch):
         err_s_label = loss_class(s_class_output, class_label)
         err_s_local = loss_domain(s_local_probability.float().view(-1), domain_label.float().view(-1))
 
-        s_global_probability = ad_net(s_global_feature)
+        s_global_probability = ad_net(s_global_feature, alpha)
         err_s_global = loss_domain(s_global_probability.float().view(-1), domain_label.float().view(-1))
         s_global_out = H(s_global_probability)
         s_global_attention = 1 + s_global_out.data
@@ -188,7 +188,7 @@ for epoch in range(n_epoch):
         input_img.resize_as_(t_img).copy_(t_img)
 
         t_feature = my_net(input_data=input_img, alpha=alpha)
-        t_local_probability = ad_net(t_feature)
+        t_local_probability = ad_net(t_feature, alpha)
         t_local_out = H(t_local_probability)
         t_global_feature = (one_tensor.data + t_local_out.data) * t_feature
         t_class_output = cla_net(t_global_feature)
@@ -196,7 +196,7 @@ for epoch in range(n_epoch):
         
         err_t_local = loss_domain(t_local_probability.float().view(-1), domain_label.float().view(-1))
         
-        t_global_probability = ad_net(t_global_feature)
+        t_global_probability = ad_net(t_global_feature, alpha)
         err_t_global = loss_domain(t_global_probability.float().view(-1), domain_label.float().view(-1))
         t_global_out = H(t_global_probability)
         t_global_attention = 1 + t_global_out.data
