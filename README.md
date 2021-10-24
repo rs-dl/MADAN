@@ -3,13 +3,25 @@
 ## Code and Dataset
 code of Cross-regional oil palm tree counting and detection via multi-level attention domain adaptation network
 
-Detailed tutorials will be available in a later time.  We hope that our work can help other researchers who are interested in domain adaptative tree crown detection.
+We hope that our work can help other researchers who are interested in domain adaptative tree crown detection.
 
 Our dataset can be downloaded from
 
 [Google Drive](https://drive.google.com/drive/folders/1VHmx7LRPfKBkunKWxWQfZu9y3IZ0MuX3?usp=sharing)
 
 [Baidu Wangpan](https://pan.baidu.com/s/1KROJNDmEJe3x97spm65k0A)  Access: eqn5
+
+## Training & Testing
+
+'python madan.py path_of_source_dataset path_of_target_dataset id_of_GPU'
+
+for example:
+
+'python madan.py /data/zjp/ITCD/palm/dataset/0 /data/zjp/ITCD/palm/dataset/1 0'
+
+In the directory of the source or target dataset here, we both include all land cover types, such as palm, vegetation, bare land, and impervious.
+
+Of course, if you need to use your definition of dataset, you can change the file data_loader.py
 
 ## Citation
 
