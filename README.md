@@ -13,11 +13,15 @@ Our dataset can be downloaded from
 
 ## Training & Testing
 
-'python madan.py path_of_source_dataset path_of_target_dataset id_of_GPU'
+```
+python madan.py path_of_source_dataset path_of_target_dataset id_of_GPU
+```
 
 for example:
 
-'python madan.py /data/zjp/ITCD/palm/dataset/0 /data/zjp/ITCD/palm/dataset/1 0'
+```
+python madan.py /data/zjp/ITCD/palm/dataset/0 /data/zjp/ITCD/palm/dataset/1 0
+```
 
 In the directory of the source or target dataset here, we both include all land cover types, such as palm, vegetation, bare land, and impervious.
 
